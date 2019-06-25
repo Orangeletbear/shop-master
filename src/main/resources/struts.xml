@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+    <!-- 设置字符编码 -->
+    <constant name="struts.i18n.encoding" value="utf-8" />
+    <!-- 设置自动装载国际化 -->
+    <constant name="struts.i18n.reload" value="true" />
+    <!-- 设置国际化的globalMessages的资源文件名 -->
+    <constant name="struts.custom.i18n.resources" value="globalMessages"/>
+    <!-- 设置动态方法调用 -->
+    <constant name="struts.enable.DnamicMethodInvocation" value="true" />
+    <!-- 设置开发模式 -->
+    <constant name="struts.devMode" value="true" />
+    <!-- 指定每次配置文件更改后，自动重新加载 -->
+    <constant name="struts.configuration.xml.reload" value="true" />
+    <!-- 设置访问方式 -->
+    <constant name="struts.action.extension" value="action,," />
+    <!-- 去除多余的格式 -->
+    <constant name="struts.ui.theme" value="simple" />
+    <!--设置上传文件大小20MB，默认为2MB大小 -->
+    <constant name="struts.multipart.maxSize" value="20971520"></constant>
+	
+	<!-- 默认访问页面 -->
+	<package name="voteSSH-maven" namespace="/" extends="struts-default">
+	<global-exception-mappings>
+			<!-- result 会取找全局视图的名称 -->
+			<exception-mapping result="null" exception="java.lang.NullPointerException"></exception-mapping>
+			<exception-mapping result="error" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	
+	<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>user>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>-->
+	<!-- 用户登录 -->
+      <action name="login" class="org.vote.action.LoginAction" method="userLogin" >
+            <result name="SUCCESS">WEB-INF/pages/admin/index.jsp</result>
+            <result name="loginFaild">/login.jsp</result> 
+      </action>
+		
+	</package>
+</struts>
